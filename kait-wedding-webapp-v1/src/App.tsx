@@ -4,7 +4,7 @@ import EventDetails from "./components/EventDetails";
 import Timeline from "./components/Timeline";
 import RSVPForm from "./components/RSVPForm";
 
-import { coupleInfo, timelinePlaceholder, guestsPlaceholder, hotelOptions } from "";
+//import { coupleInfo, timelinePlaceholder, guestsPlaceholder, hotelOptions } from "";
 
 function App() {
   return (

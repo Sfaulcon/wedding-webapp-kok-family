@@ -3,7 +3,7 @@ import { fullSync } from "../sync/fullSync";
 
 const router = Router();
 
-// POST /api/sync → manual trigger
+// POST /api → manual trigger
 router.post("/", async (req, res) => {
   try {
     fullSync();

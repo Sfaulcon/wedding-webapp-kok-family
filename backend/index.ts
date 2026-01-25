@@ -1,20 +1,33 @@
 import express from "express";
-import bodyParser from "body-parser";
+import cors from "cors";
+import dotenv from "dotenv";
 import cron from "node-cron";
-import { fullSync } from "./sync/fullSync";
+
 import inviteRoutes from "./routes/invite";
 import rsvpRoutes from "./routes/rsvp";
+import manualTriggerRoutes from "./routes/manual_trigger";
+import { fullSync } from "./sync/fullSync";
+
+dotenv.config();
 
 const app = express();
-app.use(bodyParser.json());
+
+app.use(cors());
+app.use(express.json());
 
 app.use("/api/invite", inviteRoutes);
 app.use("/api/rsvp", rsvpRoutes);
+app.use("/api", manualTriggerRoutes);
 
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, async () => {
+    console.log(`Backend running on http://localhost:${PORT}`);
+    }
+    );
+
+// Hourly sync
 cron.schedule("0 * * * *", async () => {
-  console.log("Starting hourly sheet → JSON sync...");
-  fullSync();
+  console.log("⏱ Hourly sheet sync triggered");
+  await fullSync();
 });
-
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

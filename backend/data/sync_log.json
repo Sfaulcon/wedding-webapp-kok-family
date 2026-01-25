@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "timestamp": "2026-01-25T22:36:26.734Z",
+    "sheet": "Invites",
+    "jsonFile": "invites.json",
+    "rows": 37,
+    "lastRowHash": "06c12005f3fbb5b18adeca4bc42ebc46"
+  },
+  {
+    "timestamp": "2026-01-25T22:36:27.914Z",
+    "sheet": "Guests",
+    "jsonFile": "guests.json",
+    "rows": 79,
+    "lastRowHash": "529a2faa17fdb57882c45847d8fb10da"
+  },
+  {
+    "timestamp": "2026-01-25T22:45:03.680Z",
+    "sheet": "Accommodation_Options",
+    "jsonFile": "accommodation.json",
+    "rows": 32,
+    "lastRowHash": "6144e186386e6682944da5102ff53484"
+  }
+]

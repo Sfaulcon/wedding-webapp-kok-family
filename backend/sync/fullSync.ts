@@ -10,5 +10,5 @@ export function fullSync() {
 
   queueSyncSheet(SPREADSHEET_ID, "Invites", invitesJson);
   queueSyncSheet(SPREADSHEET_ID, "Guests", guestsJson);
-  queueSyncSheet(SPREADSHEET_ID, "Accommodation", accommodationJson);
+  queueSyncSheet(SPREADSHEET_ID, "Accommodation_Options", accommodationJson);
 }

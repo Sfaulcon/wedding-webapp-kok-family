@@ -9,7 +9,7 @@ interface GuestRSVP {
     attending_braai?: boolean;
     dietary_requirements: string;
     needs_shuttle?: boolean;
-    selected_accomodation?: string;
+    selected_accommodation?: string;
     synced?: boolean;
 }
 
