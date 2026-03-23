@@ -1,1 +1,110 @@
 @import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+}
+
+:root {
+  --color-sage: #CCB89D;
+  --color-olive: #343516;
+  --color-olive-light: #E2E4D8;
+  --color-terracotta: #8F4930;
+  --color-olive-rgb: 52, 53, 22;
+  --color-terracotta-rgb: 143, 73, 48;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-olive);
+}
+
+/* 3D pop-out effect for selectable elements */
+.selectable-3d {
+  box-shadow: 0 2px 4px rgba(var(--color-olive-rgb), 0.08), 0 4px 8px rgba(var(--color-olive-rgb), 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.selectable-3d:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(var(--color-olive-rgb), 0.12), 0 4px 8px rgba(var(--color-olive-rgb), 0.06);
+}
+.selectable-3d:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(var(--color-olive-rgb), 0.1);
+}
+.selectable-3d.selected {
+  box-shadow: 0 6px 12px rgba(var(--color-olive-rgb), 0.2), 0 2px 4px rgba(var(--color-olive-rgb), 0.08);
+}
+
+/* Animations */
+@keyframes expand-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-expand-in {
+  animation: expand-in 0.3s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out both;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.35s ease-out both;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }

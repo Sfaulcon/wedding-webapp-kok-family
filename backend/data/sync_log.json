@@ -19,5 +19,12 @@
     "jsonFile": "accommodation.json",
     "rows": 32,
     "lastRowHash": "6144e186386e6682944da5102ff53484"
+  },
+  {
+    "timestamp": "2026-03-23T15:23:42.242Z",
+    "sheet": "RSVPs",
+    "jsonFile": "rsvps_from_sheet.json",
+    "rows": 79,
+    "lastRowHash": "41bab51dd2169dcfa66174bc8629a65f"
   }
 ]

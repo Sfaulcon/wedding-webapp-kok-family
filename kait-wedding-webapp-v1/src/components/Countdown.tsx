@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 interface CountdownProps {
-  targetDate: string; // ISO string or date string
+  targetDate: string;
 }
 
 const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number }>({
+  const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -37,11 +37,23 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="text-center mt-4 text-2xl font-semibold">
-      <span>{timeLeft.days}d </span>
-      <span>{timeLeft.hours}h </span>
-      <span>{timeLeft.minutes}m </span>
-      <span>{timeLeft.seconds}s</span>
+    <div className="flex justify-center gap-4 md:gap-6 mt-6" style={{ color: "#343516" }}>
+      <div className="text-center">
+        <span className="block text-2xl md:text-3xl font-light tabular-nums">{timeLeft.days}</span>
+        <span className="text-xs uppercase tracking-wider">Days</span>
+      </div>
+      <div className="text-center">
+        <span className="block text-2xl md:text-3xl font-light tabular-nums">{timeLeft.hours}</span>
+        <span className="text-xs uppercase tracking-wider">Hours</span>
+      </div>
+      <div className="text-center">
+        <span className="block text-2xl md:text-3xl font-light tabular-nums">{timeLeft.minutes}</span>
+        <span className="text-xs uppercase tracking-wider">Mins</span>
+      </div>
+      <div className="text-center">
+        <span className="block text-2xl md:text-3xl font-light tabular-nums">{timeLeft.seconds}</span>
+        <span className="text-xs uppercase tracking-wider">Secs</span>
+      </div>
     </div>
   );
 };
