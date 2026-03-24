@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { User, Check, Music, UtensilsCrossed, ChevronLeft, ChevronRight, Building2, Banknote, CircleCheck, CreditCard } from "lucide-react";
+import { createPortal } from "react-dom";
+import { User, Check, Music, UtensilsCrossed, ChevronLeft, ChevronRight, Building2, Banknote, CircleCheck, CreditCard, X } from "lucide-react";
 import Toggle from "./Toggle";
 import SectionCard from "./SectionCard";
 import AccommodationCards, { type AccommodationOption } from "./AccommodationCards";
@@ -55,6 +56,7 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
   const [lockAt, setLockAt] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState<"rsvp" | "song" | null>(null);
 
   const isLocked = lockAt ? new Date() > new Date(lockAt) : false;
 
@@ -133,7 +135,7 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
           g.guest_id === selectedGuest.guest_id ? { ...g, has_rsvped: true } : g
         )
       );
-      alert("RSVP saved 💛");
+      setSuccessMessage("rsvp");
     } else {
       alert("Something went wrong. Please try again.");
     }
@@ -160,7 +162,7 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
       ]);
       setSongTitle("");
       setSongArtist("");
-      alert("Song request saved 💛");
+      setSuccessMessage("song");
     } else {
       alert("Something went wrong. Please try again.");
     }
@@ -453,6 +455,49 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
           <AccommodationCards options={accommodationOptions} />
         </SectionCard>
       )}
+
+      {successMessage &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-live="polite"
+            className="fixed inset-0 flex items-center justify-center p-4 bg-black/50 animate-fade-in"
+            style={{ zIndex: 99999 }}
+            onClick={() => setSuccessMessage(null)}
+          >
+            <div
+              className="relative max-w-sm w-full rounded-2xl p-8 shadow-xl animate-fade-in-scale flex flex-col items-center text-center"
+              style={{
+                background: "rgba(204, 184, 157, 0.9)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.4)",
+                boxShadow: "0 25px 50px -12px rgba(52, 53, 22, 0.25)",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setSuccessMessage(null)}
+                aria-label="Close"
+                className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/10 transition-colors"
+              >
+                <X size={20} strokeWidth={2} style={{ color: "#343516" }} />
+              </button>
+              <CircleCheck size={48} className="mb-4" style={{ color: "#22c55e" }} strokeWidth={2} />
+              <h3 className="text-xl font-serif mb-2" style={{ color: "#343516" }}>
+                Thank you!
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#343516" }}>
+                {successMessage === "rsvp"
+                  ? "Your response has been sent. We look forward to celebrating with you."
+                  : "Your song request has been sent. We can't wait to hear it!"}
+              </p>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }
