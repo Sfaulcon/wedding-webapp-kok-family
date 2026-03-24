@@ -54,5 +54,40 @@
     "jsonFile": "guests.json",
     "rows": 79,
     "lastRowHash": "cd0961efd261fcdbc3b6fbc5576570a8"
+  },
+  {
+    "timestamp": "2026-03-24T12:21:25.907Z",
+    "sheet": "Food_Options",
+    "jsonFile": "food_options.json",
+    "rows": 3,
+    "lastRowHash": "dfdfa5f4e5508dafbe9ddb9a0c784f69"
+  },
+  {
+    "timestamp": "2026-03-24T12:21:26.613Z",
+    "sheet": "Story",
+    "jsonFile": "story.json",
+    "rows": 1,
+    "lastRowHash": "ae14fb91fed956c875aca4fe3aa35c68"
+  },
+  {
+    "timestamp": "2026-03-24T12:28:21.359Z",
+    "sheet": "Guests",
+    "jsonFile": "guests.json",
+    "rows": 79,
+    "lastRowHash": "8bbfbafb0807ec09b3feee2479a1261d"
+  },
+  {
+    "timestamp": "2026-03-24T12:34:46.897Z",
+    "sheet": "Guests",
+    "jsonFile": "guests.json",
+    "rows": 79,
+    "lastRowHash": "5b6919beae1601d339ba5010667dd1d1"
+  },
+  {
+    "timestamp": "2026-03-24T12:34:53.002Z",
+    "sheet": "Venue_Payments",
+    "jsonFile": "venue_payments.json",
+    "rows": 23,
+    "lastRowHash": "a4b6f72c2ff3f7b387eb696e5d9604a5"
   }
 ]

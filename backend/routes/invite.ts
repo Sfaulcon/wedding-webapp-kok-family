@@ -4,6 +4,7 @@ import path from "path";
 
 import { logger } from "../lib/logger";
 import { isValidToken } from "../lib/validation";
+import { loadWebsiteInfo } from "../lib/websiteInfo";
 
 const router = Router();
 
@@ -13,6 +14,7 @@ const ACCOMMODATION_FILE = path.join(__dirname, "../data/accommodation.json");
 const RSVPS_FILE = path.join(__dirname, "../data/rsvps.json");
 const RSVPS_FROM_SHEET_FILE = path.join(__dirname, "../data/rsvps_from_sheet.json");
 const SONG_REQUESTS_FILE = path.join(__dirname, "../data/song_requests.json");
+const VENUE_PAYMENTS_FILE = path.join(__dirname, "../data/venue_payments.json");
 
 /**
  * TRUE/true/Yes/yes = has accommodation (don't show options)
@@ -40,6 +42,51 @@ function getGuestId(row: Record<string, unknown>): string | undefined {
     }
   }
   return undefined;
+}
+
+function getRowValue(row: Record<string, unknown>, ...keys: string[]): string | undefined {
+  const norm = (s: string) => s.toLowerCase().replace(/\s/g, "_");
+  for (const key of keys) {
+    for (const k of Object.keys(row)) {
+      if (norm(k) === norm(key)) {
+        const v = row[k];
+        if (v !== undefined && v !== null && String(v).trim() !== "") return String(v).trim();
+        return undefined;
+      }
+    }
+  }
+  return undefined;
+}
+
+function isPaymentReceived(val: unknown): boolean {
+  if (val == null || val === "") return false;
+  const s = String(val).toUpperCase();
+  return s === "TRUE" || s === "YES" || s === "1";
+}
+
+async function getVenuePaymentsByToken(token: string): Promise<Map<string, { cottage_number?: string; amount_owed?: string; payment_received: boolean }>> {
+  const map = new Map<string, { cottage_number?: string; amount_owed?: string; payment_received: boolean }>();
+  try {
+    if (!(await fs.pathExists(VENUE_PAYMENTS_FILE))) return map;
+    const rows = (await fs.readJSON(VENUE_PAYMENTS_FILE)) as Array<Record<string, unknown>>;
+    for (const row of rows) {
+      const rowToken = getInviteToken(row) ?? row.invite_token;
+      if (String(rowToken) !== token) continue;
+      const guestId = getGuestId(row) ?? row.guest_id;
+      if (!guestId) continue;
+      const cottage = getRowValue(row, "cottage_number", "cottage");
+      const amount = getRowValue(row, "amount_owed", "amount");
+      const paymentVal = getRowValue(row, "payment_received", "payment_recieved");
+      map.set(String(guestId), {
+        cottage_number: cottage,
+        amount_owed: amount,
+        payment_received: isPaymentReceived(paymentVal ?? row.payment_received ?? row.payment_recieved),
+      });
+    }
+  } catch (err) {
+    logger.warn("Failed to read venue_payments.json", { token, error: String(err) });
+  }
+  return map;
 }
 
 async function getRsvpedGuestIds(token: string): Promise<Set<string>> {
@@ -113,6 +160,7 @@ router.get("/:token", async (req, res) => {
 
     const guestsForInvite = guests.filter((g: Record<string, unknown>) => g.invite_token === token);
     const rsvpedIds = await getRsvpedGuestIds(token);
+    const venuePayments = await getVenuePaymentsByToken(token);
 
     logger.debug("RSVP status loaded", {
       token,
@@ -123,10 +171,15 @@ router.get("/:token", async (req, res) => {
 
     const guestsWithRsvp = guestsForInvite.map((g: Record<string, unknown>) => {
       const val = g.accomodation_required ?? g.accommodation_required;
+      const gid = String(g.guest_id ?? "");
+      const venue = venuePayments.get(gid);
       return {
         ...g,
         accomodation_required: hasAccommodation(val) ? "TRUE" : "FALSE",
-        has_rsvped: rsvpedIds.has(String(g.guest_id ?? "")),
+        has_rsvped: rsvpedIds.has(gid),
+        cottage_number: venue?.cottage_number,
+        amount_owed: venue?.amount_owed,
+        payment_received: venue?.payment_received ?? false,
       };
     });
 
@@ -134,6 +187,7 @@ router.get("/:token", async (req, res) => {
       (g: Record<string, unknown>) => g.accomodation_required === "FALSE"
     );
     const song_requests = await getSongRequestsForToken(token);
+    const websiteInfo = await loadWebsiteInfo();
     logger.info("Invite served successfully", {
       token,
       groupName: invite.group_name,
@@ -145,8 +199,9 @@ router.get("/:token", async (req, res) => {
       group_name: invite.group_name,
       guests: guestsWithRsvp,
       accommodation_options: accommodation,
-      banking_details: process.env.BANKING_DETAILS || "TBD",
+      banking_details: websiteInfo.banking.formatted,
       song_requests,
+      website_info: websiteInfo,
     });
   } catch (err) {
     logger.error("Invite lookup failed", err, { token });

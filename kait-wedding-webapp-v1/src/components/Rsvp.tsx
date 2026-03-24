@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User, Check, Music, UtensilsCrossed, ChevronLeft, ChevronRight, Building2, Banknote } from "lucide-react";
+import { User, Check, Music, UtensilsCrossed, ChevronLeft, ChevronRight, Building2, Banknote, CircleCheck, CreditCard } from "lucide-react";
 import Toggle from "./Toggle";
 import SectionCard from "./SectionCard";
 import AccommodationCards, { type AccommodationOption } from "./AccommodationCards";
@@ -14,6 +14,7 @@ type Guest = {
   has_rsvped?: boolean;
   cottage_number?: string;
   amount_owed?: string;
+  payment_received?: boolean;
 };
 
 type RsvpProps = {
@@ -35,6 +36,13 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
   const [songRequests, setSongRequests] = useState<Array<{ song_title: string; artist?: string }>>([]);
   const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
   const [bankingDetails, setBankingDetails] = useState<string>("TBD");
+  const [banking, setBanking] = useState<{
+    bank_name?: string;
+    account_holder?: string;
+    account_type?: string;
+    account_number?: string;
+    branch_code?: string;
+  } | null>(null);
 
   const [attendingWedding, setAttendingWedding] = useState<boolean | null>(null);
   const [attendingBraai, setAttendingBraai] = useState<boolean | null>(null);
@@ -63,20 +71,25 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
         return res.json();
       })
       .then((data) => {
-        const mappedGuests = data.guests.map((g: Record<string, unknown>) => ({
-          guest_id: g.guest_id,
-          name: g.full_name,
-          invited_wedding: g.invited_wedding === "TRUE",
-          invited_braai: g.invited_braai === "TRUE",
-          accomodation_required: g.accomodation_required === "TRUE",
-          has_rsvped: Boolean(g.has_rsvped),
-          cottage_number: pick<string>(g, "cottage_number", "cottage", "cottage number") ?? undefined,
-          amount_owed: pick<string>(g, "amount_owed", "amount", "amount owed") ?? undefined,
-        }));
+        const mappedGuests = data.guests.map((g: Record<string, unknown>) => {
+          const paymentVal = g.payment_received ?? g.payment_recieved;
+          return {
+            guest_id: g.guest_id,
+            name: g.full_name,
+            invited_wedding: g.invited_wedding === "TRUE",
+            invited_braai: g.invited_braai === "TRUE",
+            accomodation_required: g.accomodation_required === "TRUE",
+            has_rsvped: Boolean(g.has_rsvped),
+            cottage_number: pick<string>(g, "cottage_number", "cottage", "cottage number") ?? undefined,
+            amount_owed: pick<string>(g, "amount_owed", "amount", "amount owed") ?? undefined,
+            payment_received: paymentVal === true || paymentVal === "TRUE" || String(paymentVal).toUpperCase() === "YES",
+          };
+        });
         setGuests(mappedGuests);
         setLockAt(data.rsvp_lock_at);
         setAccommodationOptions(data.accommodation_options || []);
         setBankingDetails(data.banking_details || "TBD");
+        setBanking(data.website_info?.banking ?? null);
         setSongRequests(data.song_requests || []);
         const firstGuestId = mappedGuests[0]?.guest_id ?? "";
         setSongGuestId(firstGuestId);
@@ -251,12 +264,12 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
                   className="px-4 pt-4 pb-4 rounded-b-lg border border-t-0 space-y-5 animate-expand-in glass-subtle"
                   style={{ borderColor: "#343516" }}
                 >
-                  {/* Venue accommodation info: cottage, amount owed, banking */}
-                  {guest.cottage_number && (
+                  {/* Venue accommodation info: cottage, amount owed, payment status, banking */}
+                  {(guest.cottage_number || guest.amount_owed) && (
                     <div className="p-3 rounded-xl text-sm space-y-2 glass">
                       <p className="font-medium flex items-center gap-2" style={{ color: "#343516" }}>
                         <Building2 size={16} style={{ color: "#8F4930" }} strokeWidth={2} />
-                        Cottage {guest.cottage_number}
+                        {guest.cottage_number ? `Cottage ${guest.cottage_number}` : "Venue accommodation"}
                       </p>
                       {guest.amount_owed && (
                         <p className="flex items-center gap-2" style={{ color: "#8F4930" }}>
@@ -264,9 +277,47 @@ export default function Rsvp({ inviteToken }: RsvpProps) {
                           Amount due: ZAR {guest.amount_owed}
                         </p>
                       )}
-                      <p className="text-xs" style={{ color: "#343516" }}>
-                        Banking details: {bankingDetails}
+                      <p className="flex items-center gap-2 text-xs font-medium" style={{ color: guest.payment_received ? "#22c55e" : "#8F4930" }}>
+                        {guest.payment_received ? (
+                          <>
+                            <CircleCheck size={14} strokeWidth={2} />
+                            Payment received
+                          </>
+                        ) : (
+                          <>Payment pending</>
+                        )}
                       </p>
+                      <div className="space-y-1.5 pt-1 border-t border-[#343516]/20">
+                        <p className="text-xs font-semibold flex items-center gap-2" style={{ color: "#343516" }}>
+                          <CreditCard size={12} style={{ color: "#8F4930" }} strokeWidth={2} />
+                          Banking details
+                        </p>
+                        {banking &&
+                        banking.bank_name &&
+                        banking.bank_name !== "TBD" &&
+                        banking.account_holder &&
+                        banking.account_holder !== "TBD" &&
+                        banking.account_number &&
+                        banking.account_number !== "TBD" ? (
+                          <div className="text-xs space-y-1" style={{ color: "#343516" }}>
+                            <p>Bank: {banking.bank_name}</p>
+                            <p>Account holder: {banking.account_holder}</p>
+                            {banking.account_type && banking.account_type !== "TBD" && (
+                              <p>Account type: {banking.account_type}</p>
+                            )}
+                            <p>Account number: {banking.account_number}</p>
+                            {banking.branch_code && banking.branch_code !== "TBD" && (
+                              <p>Branch code: {banking.branch_code}</p>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-xs opacity-90" style={{ color: "#343516" }}>
+                            {bankingDetails === "TBD"
+                              ? "Banking details to be confirmed."
+                              : bankingDetails}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   )}
 

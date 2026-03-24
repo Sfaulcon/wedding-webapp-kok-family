@@ -9,6 +9,7 @@ import { logger } from "./lib/logger";
 import inviteRoutes from "./routes/invite";
 import rsvpRoutes from "./routes/rsvp";
 import songRequestRoutes from "./routes/songRequest";
+import websiteInfoRoutes from "./routes/websiteInfo";
 import manualTriggerRoutes from "./routes/manual_trigger";
 import { fullSync } from "./sync/fullSync";
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 app.use("/api/invite", inviteRoutes);
 app.use("/api/rsvp", rsvpRoutes);
 app.use("/api/song-request", songRequestRoutes);
+app.use("/api/website-info", websiteInfoRoutes);
 app.use("/api", manualTriggerRoutes);
 
 const PORT = process.env.PORT || 4000;

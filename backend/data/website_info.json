@@ -1,0 +1,9 @@
+[
+  { "Item": "dress_code", "Value": "Suit and Tie" },
+  { "Item": "gifts", "Value": "Your presence at our celebration is the greatest gift. Should you wish to honour us with something more, monetary contribution towards our future together would be warmly appreciated." },
+  { "Item": "bank_name", "Value": "TBD" },
+  { "Item": "account_holder", "Value": "TBD" },
+  { "Item": "account_type", "Value": "TBD" },
+  { "Item": "account_number", "Value": "TBD" },
+  { "Item": "branch_code", "Value": "TBD" }
+]
