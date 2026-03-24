@@ -1,21 +1,20 @@
-import path from "path";
-
 import { logger } from "../lib/logger";
+import { dataFile } from "../lib/paths";
 import { queueSyncSheet } from "../queue/sheetQueue";
 import { SPREADSHEET_ID } from "./sheetsSync";
 
 export function fullSync() {
   logger.info("Full sync triggered", { spreadsheetId: SPREADSHEET_ID });
 
-  const invitesJson = path.join(__dirname, "../data/invites.json");
-  const guestsJson = path.join(__dirname, "../data/guests.json");
-  const accommodationJson = path.join(__dirname, "../data/accommodation.json");
-  const rsvpsFromSheetJson = path.join(__dirname, "../data/rsvps_from_sheet.json");
-  const songRequestsJson = path.join(__dirname, "../data/song_requests.json");
-  const websiteInfoJson = path.join(__dirname, "../data/website_info.json");
-  const foodOptionsJson = path.join(__dirname, "../data/food_options.json");
-  const storyJson = path.join(__dirname, "../data/story.json");
-  const venuePaymentsJson = path.join(__dirname, "../data/venue_payments.json");
+  const invitesJson = dataFile("invites.json");
+  const guestsJson = dataFile("guests.json");
+  const accommodationJson = dataFile("accommodation.json");
+  const rsvpsFromSheetJson = dataFile("rsvps_from_sheet.json");
+  const songRequestsJson = dataFile("song_requests.json");
+  const websiteInfoJson = dataFile("website_info.json");
+  const foodOptionsJson = dataFile("food_options.json");
+  const storyJson = dataFile("story.json");
+  const venuePaymentsJson = dataFile("venue_payments.json");
 
   queueSyncSheet(SPREADSHEET_ID, "Invites", invitesJson);
   queueSyncSheet(SPREADSHEET_ID, "Guests", guestsJson);

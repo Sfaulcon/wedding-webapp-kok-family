@@ -4,9 +4,10 @@ import path from "path";
 import crypto from "crypto";
 
 import { logger } from "../lib/logger";
+import { credentialsFile, dataFile } from "../lib/paths";
 
-const CREDENTIALS_PATH = path.join(__dirname, "../credentials/google-key.json");
-const LOG_FILE = path.join(__dirname, "../data/sync_log.json");
+const CREDENTIALS_PATH = credentialsFile("google-key.json");
+const LOG_FILE = dataFile("sync_log.json");
 
 export const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "1jyuMv2Ek_wwQUmM-0LMZs79J2bCWIdTv6sZOUZvSAe0";
 const RSVPS_SHEET = "RSVPs";
@@ -135,22 +136,34 @@ export async function appendRsvpToSheet(rows: RsvpRow[]): Promise<void> {
 
 const SONG_REQUESTS_SHEET = "Song_Requests";
 
-/**
- * Append a song request to the Song_Requests sheet.
- * Ensure the spreadsheet has a "Song_Requests" tab with headers:
- * timestamp, invite_token, guest_id, song_title, artist
- */
-export async function appendSongRequestToSheet(entry: {
+export interface SongRequestRow {
   timestamp: string;
   invite_token: string;
   guest_id: string;
   song_title: string;
   artist: string;
-}): Promise<void> {
-  logger.debug("Appending song request to sheet", { guest_id: entry.guest_id, song_title: entry.song_title });
+}
+
+/**
+ * Append song request(s) to the Song_Requests sheet. Supports batching.
+ * Headers: timestamp, invite_token, guest_id, song_title, artist
+ */
+export async function appendSongRequestToSheet(
+  entries: SongRequestRow | SongRequestRow[]
+): Promise<void> {
+  const rows = Array.isArray(entries) ? entries : [entries];
+  if (rows.length === 0) return;
+
+  logger.debug("Appending song requests to sheet", { rowCount: rows.length });
 
   const sheets = await authSheets();
-  const values = [[entry.timestamp, entry.invite_token, entry.guest_id, entry.song_title, entry.artist || ""]];
+  const values = rows.map((r) => [
+    r.timestamp,
+    r.invite_token,
+    r.guest_id,
+    r.song_title,
+    r.artist || "",
+  ]);
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: SPREADSHEET_ID,
@@ -160,5 +173,5 @@ export async function appendSongRequestToSheet(entry: {
     requestBody: { values },
   });
 
-  logger.info("Song request appended to sheet");
+  logger.info("Song requests appended to sheet", { rowCount: rows.length });
 }

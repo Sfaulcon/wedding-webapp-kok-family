@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { logger } from "../lib/logger";
-import { appendRSVPToJSON } from "../queue/rsvpQueue";
+import { appendRSVPToJSON, type RSVPSubmission } from "../queue/rsvpQueue";
 import { isValidToken, sanitizeString, LIMITS } from "../lib/validation";
 import { isGuestInInvite } from "../lib/validateGuest";
 
@@ -31,21 +31,22 @@ router.post("/", async (req, res) => {
   logger.info("RSVP received", { invite_token, guest_id, attending_wedding, attending_braai });
 
   try {
-    await appendRSVPToJSON({
+    const submission: RSVPSubmission = {
       invite_token,
       responses: [{
         invite_token,
         guest_id: guest_id.trim(),
         attending_wedding: attending_wedding === true || attending_wedding === false ? attending_wedding : undefined,
         attending_braai: attending_braai === true || attending_braai === false ? attending_braai : undefined,
-        dietary_requirements: dietary,
+        dietary_requirements: dietary ?? "",
       }],
-    });
-    logger.debug("RSVP queued", { invite_token, guest_id });
-    res.json({ message: "RSVP queued successfully" });
+    };
+    await appendRSVPToJSON(submission);
+    logger.debug("RSVP saved", { invite_token, guest_id });
+    res.json({ message: "RSVP saved successfully" });
   } catch (err) {
-    logger.error("Failed to queue RSVP", err, { invite_token, guest_id });
-    res.status(500).json({ message: "Failed to queue RSVP" });
+    logger.error("Failed to save RSVP", err, { invite_token, guest_id });
+    res.status(500).json({ message: "Failed to save RSVP" });
   }
 });
 

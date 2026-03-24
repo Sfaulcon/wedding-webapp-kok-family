@@ -9,8 +9,9 @@ const googleapis_1 = require("googleapis");
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
 const crypto_1 = __importDefault(require("crypto"));
-const CREDENTIALS_PATH = path_1.default.join(__dirname, "../credentials/google-key.json");
-const LOG_FILE = path_1.default.join(__dirname, "../data/sync_log.json");
+const paths_1 = require("../lib/paths");
+const CREDENTIALS_PATH = (0, paths_1.credentialsFile)("google-key.json");
+const LOG_FILE = (0, paths_1.dataFile)("sync_log.json");
 const queue = [];
 let processing = false;
 async function authSheets() {

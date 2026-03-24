@@ -32,10 +32,14 @@ React + TypeScript + Vite frontend for the wedding invitation web app.
 | `/`              | Main invite page (no token)     |
 | `/invite/:token` | Invite page with guest token    |
 
-## Build
+## Build (production)
 
-```bash
-npm run build
+From the **repo root**, `.\release.ps1` builds with `VITE_API_URL=https://api.francoisandkaitlyn.co.za` and zips `dist/` into the release package.
+
+Manual build:
+
+```powershell
+$env:VITE_API_URL="https://api.francoisandkaitlyn.co.za"; npm run build
 ```
 
-Output goes to `dist/`. Point your static hosting at this folder.
+Output is `dist/`. `public/_redirects` helps Netlify SPA routing; nginx should serve `try_files` for the SPA.

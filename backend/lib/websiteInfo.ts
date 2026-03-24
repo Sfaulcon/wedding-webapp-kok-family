@@ -1,9 +1,10 @@
 import fs from "fs-extra";
-import path from "path";
 
-const WEBSITE_INFO_FILE = path.join(__dirname, "../data/website_info.json");
-const FOOD_OPTIONS_FILE = path.join(__dirname, "../data/food_options.json");
-const STORY_FILE = path.join(__dirname, "../data/story.json");
+import { dataFile } from "./paths";
+
+const WEBSITE_INFO_FILE = dataFile("website_info.json");
+const FOOD_OPTIONS_FILE = dataFile("food_options.json");
+const STORY_FILE = dataFile("story.json");
 
 function pick<T>(rows: Array<Record<string, unknown>>, itemKey: string, valueKey = "Value"): string {
   const norm = (s: string) => s.toLowerCase().replace(/\s/g, "_");

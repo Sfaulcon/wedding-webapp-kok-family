@@ -1,7 +1,8 @@
 import fs from "fs-extra";
-import path from "path";
 
-const GUESTS_FILE = path.join(__dirname, "../data/guests.json");
+import { dataFile } from "./paths";
+
+const GUESTS_FILE = dataFile("guests.json");
 
 /**
  * Verify that the guest_id belongs to the invite_token. Prevents submitting

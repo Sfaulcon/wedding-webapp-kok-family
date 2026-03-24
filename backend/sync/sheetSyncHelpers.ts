@@ -3,8 +3,10 @@ import fs from "fs-extra";
 import path from "path";
 import crypto from "crypto";
 
-const CREDENTIALS_PATH = path.join(__dirname, "../credentials/google-key.json");
-const LOG_FILE = path.join(__dirname, "../data/sync_log.json");
+import { credentialsFile, dataFile } from "../lib/paths";
+
+const CREDENTIALS_PATH = credentialsFile("google-key.json");
+const LOG_FILE = dataFile("sync_log.json");
 
 const queue: (() => Promise<void>)[] = [];
 let processing = false;

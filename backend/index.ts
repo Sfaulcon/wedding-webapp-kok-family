@@ -17,6 +17,11 @@ dotenv.config();
 
 const app = express();
 
+// Behind reverse proxy (Railway, Render, nginx): correct client IP for rate limits
+if (process.env.TRUST_PROXY === "1" || process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 // Security headers
 app.use(helmet({
   contentSecurityPolicy: false, // Allow inline styles/scripts if needed for frontend

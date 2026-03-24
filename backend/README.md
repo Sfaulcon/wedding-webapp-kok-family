@@ -2,6 +2,8 @@
 
 Express API for the wedding web app. Serves invite data, RSVPs, song requests, and syncs from Google Sheets.
 
+**Production:** from the repo root run `.\release.ps1` (creates a zip with `api/` + `www/` + `INSTALL.txt`).
+
 ## Tech Stack
 
 - **Express 5** – HTTP API
@@ -35,6 +37,9 @@ LOG_LEVEL=INFO
 | `SPREADSHEET_ID`| Google Sheet ID                      | Required|
 | `ALLOWED_ORIGINS`| CORS origins (comma-separated)      | localhost|
 | `LOG_LEVEL`     | Logging level                        | INFO    |
+| `SHEETS_WRITE_DELAY_MS` | Min ms between Sheet API calls | 2000 |
+| `SHEETS_BATCH_SIZE_RSVP` | Max RSVPs per batch            | 20 |
+| `SHEETS_BATCH_SIZE_SONG` | Max song requests per batch     | 20 |
 
 ### 3. Google Sheets credentials
 
@@ -63,7 +68,11 @@ Add the required tabs to your spreadsheet. See [SHEETS_SETUP.md](SHEETS_SETUP.md
 
 | Command       | Description                     |
 |---------------|---------------------------------|
-| `npm run dev` | Start with hot reload           |
+| `npm run dev` | Start with hot reload (ts-node-dev) |
+| `npm run build` | Compile TypeScript to `dist/` |
+| `npm start`   | Run production server (`node dist/index.js`) |
+
+Run **`npm run build`** before **`npm start`**. Start the process from the `backend` directory so `data/` and `credentials/` paths resolve correctly.
 
 ## API Endpoints
 
@@ -78,8 +87,7 @@ Add the required tabs to your spreadsheet. See [SHEETS_SETUP.md](SHEETS_SETUP.md
 
 - **On startup**: Full sync from Google Sheets to `data/*.json`
 - **Hourly**: Automatic sync via cron
-
-Manual sync: `POST /api/sync/manual` (if implemented)
+- **Writes (RSVP, song requests)**: Saved to JSON immediately, then queued for batched Sheet append with rate limiting (2s between API calls, batches of 20)
 
 ## Data Files
 

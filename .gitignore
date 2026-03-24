@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.log
+
+# Env & secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build output (rebuild on server or CI)
+backend/dist/
+kait-wedding-webapp-v1/dist/
+
+# Release zip (run release.ps1 locally)
+release/
+
+# Backend local data & credentials (optional: track data/ in private repo — default ignore)
+backend/credentials/
+# backend/data/

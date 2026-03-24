@@ -1,20 +1,19 @@
 import { Router } from "express";
 import fs from "fs-extra";
-import path from "path";
-
 import { logger } from "../lib/logger";
+import { dataFile } from "../lib/paths";
 import { isValidToken } from "../lib/validation";
 import { loadWebsiteInfo } from "../lib/websiteInfo";
 
 const router = Router();
 
-const INVITES_FILE = path.join(__dirname, "../data/invites.json");
-const GUESTS_FILE = path.join(__dirname, "../data/guests.json");
-const ACCOMMODATION_FILE = path.join(__dirname, "../data/accommodation.json");
-const RSVPS_FILE = path.join(__dirname, "../data/rsvps.json");
-const RSVPS_FROM_SHEET_FILE = path.join(__dirname, "../data/rsvps_from_sheet.json");
-const SONG_REQUESTS_FILE = path.join(__dirname, "../data/song_requests.json");
-const VENUE_PAYMENTS_FILE = path.join(__dirname, "../data/venue_payments.json");
+const INVITES_FILE = dataFile("invites.json");
+const GUESTS_FILE = dataFile("guests.json");
+const ACCOMMODATION_FILE = dataFile("accommodation.json");
+const RSVPS_FILE = dataFile("rsvps.json");
+const RSVPS_FROM_SHEET_FILE = dataFile("rsvps_from_sheet.json");
+const SONG_REQUESTS_FILE = dataFile("song_requests.json");
+const VENUE_PAYMENTS_FILE = dataFile("venue_payments.json");
 
 /**
  * TRUE/true/Yes/yes = has accommodation (don't show options)
