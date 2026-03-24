@@ -26,5 +26,26 @@
     "jsonFile": "rsvps_from_sheet.json",
     "rows": 79,
     "lastRowHash": "41bab51dd2169dcfa66174bc8629a65f"
+  },
+  {
+    "timestamp": "2026-03-23T20:00:46.411Z",
+    "sheet": "Invites",
+    "jsonFile": "invites.json",
+    "rows": 37,
+    "lastRowHash": "054deab2c52501b8ea02454aee0b12bb"
+  },
+  {
+    "timestamp": "2026-03-23T20:00:47.039Z",
+    "sheet": "Guests",
+    "jsonFile": "guests.json",
+    "rows": 79,
+    "lastRowHash": "5b6919beae1601d339ba5010667dd1d1"
+  },
+  {
+    "timestamp": "2026-03-23T20:00:48.317Z",
+    "sheet": "RSVPs",
+    "jsonFile": "rsvps_from_sheet.json",
+    "rows": 0,
+    "lastRowHash": "99914b932bd37a50b983c5e7c90ae93b"
   }
 ]

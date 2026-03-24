@@ -11,9 +11,11 @@ type Guest = {
   has_rsvped?: boolean;
 };
 
-export default function Rsvp() {
-  const params = new URLSearchParams(window.location.search);
-  const inviteToken = params.get("code");
+type RsvpProps = {
+  inviteToken: string | null;
+};
+
+export default function Rsvp({ inviteToken }: RsvpProps) {
 
   const [guests, setGuests] = useState<Guest[]>([]);
   const [accommodationOptions, setAccommodationOptions] = useState<AccommodationOption[]>([]);

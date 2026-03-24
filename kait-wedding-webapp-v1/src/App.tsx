@@ -1,19 +1,36 @@
+import { Routes, Route, useParams } from "react-router-dom";
 import BackgroundCollage from "./components/BackgroundCollage";
 import Letter from "./components/Letter";
 import Header from "./components/Header";
 import InviteInfo from "./components/InviteInfo";
 import Rsvp from "./components/Rsvp";
 
-const App: React.FC = () => {
+function AppWithInvite() {
+  const { token } = useParams<{ token: string }>();
+  // Support both /invite/:token and legacy /?code=... for backward compatibility
+  const legacyCode =
+    !token && typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("code")
+      : null;
+  const inviteToken = token ?? legacyCode ?? null;
   return (
     <div className="min-h-screen py-8 md:py-12">
       <BackgroundCollage />
       <Letter>
         <Header />
         <InviteInfo />
-        <Rsvp />
+        <Rsvp inviteToken={inviteToken} />
       </Letter>
     </div>
+  );
+}
+
+const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/invite/:token" element={<AppWithInvite />} />
+      <Route path="/" element={<AppWithInvite />} />
+    </Routes>
   );
 };
 
