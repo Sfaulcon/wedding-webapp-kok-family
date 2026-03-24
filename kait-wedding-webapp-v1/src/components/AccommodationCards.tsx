@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Home, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 export type AccommodationOption = {
   name: string;
@@ -7,7 +8,7 @@ export type AccommodationOption = {
   notes?: string;
 };
 
-const CARDS_PER_PAGE = 3;
+const CARDS_PER_PAGE = 2;
 
 interface AccommodationCardsProps {
   options: AccommodationOption[];
@@ -22,11 +23,9 @@ const AccommodationCards: React.FC<AccommodationCardsProps> = ({ options }) => {
   if (!options?.length) return null;
 
   return (
-    <section
-      className="mt-12 pt-8"
-      style={{ borderTop: "1px solid rgba(52, 53, 22, 0.25)" }}
-    >
-      <h3 className="text-xl font-serif text-center mb-6" style={{ color: "#343516" }}>
+    <section>
+      <h3 className="text-xl font-serif text-center mb-6 flex items-center justify-center gap-2" style={{ color: "#343516" }}>
+        <Home size={22} style={{ color: "#8F4930" }} strokeWidth={2} />
         Accommodation Options
       </h3>
       <p className="text-sm text-center mb-6 max-w-md mx-auto" style={{ color: "#8F4930" }}>
@@ -39,43 +38,41 @@ const AccommodationCards: React.FC<AccommodationCardsProps> = ({ options }) => {
           onClick={() => setPage((p) => Math.max(0, p - 1))}
           disabled={page === 0}
           aria-label="Previous accommodation options"
-          className="flex-shrink-0 w-10 h-10 rounded-full border disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center hover:text-[#8F4930] transition-all duration-200 selectable-3d disabled:hover:transform-none shadow-sm"
-          style={{ backgroundColor: "#E2E4D8", borderColor: "rgba(52, 53, 22, 0.25)", color: "#343516" }}
+          className="flex-shrink-0 w-10 h-10 rounded-full disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center hover:text-[#8F4930] transition-all duration-200 selectable-3d disabled:hover:transform-none glass-subtle"
+          style={{ color: "#343516" }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
+          <ChevronLeft size={20} strokeWidth={2} />
         </button>
 
-        <div key={page} className="flex-1 grid gap-4 grid-cols-1 sm:grid-cols-3 min-h-[140px]">
+        <div key={page} className="flex-1 grid gap-4 grid-cols-1 sm:grid-cols-2">
           {visibleOptions.map((opt, i) => (
             <a
               key={start + i}
               href={opt.url}
-              className="block p-4 rounded-lg border hover:border-[#8F4930]/60 transition-all duration-200 group selectable-3d shadow-sm animate-fade-in-scale"
+              className="block p-4 rounded-xl border border-transparent hover:border-[#8F4930]/60 transition-all duration-200 group selectable-3d shadow-sm animate-fade-in-scale h-[140px] flex flex-col glass-subtle"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                backgroundColor: "#E2E4D8",
-                borderColor: "rgba(52, 53, 22, 0.25)",
-                animationDelay: `${i * 80}ms`,
-              }}
+              style={{ animationDelay: `${i * 80}ms` }}
             >
-              <h4 className="font-medium group-hover:text-[#8F4930]" style={{ color: "#343516" }}>
-                {opt.name}
-              </h4>
+              <div className="flex flex-col mb-2">
+                <Home size={20} className="flex-shrink-0 mb-1.5 self-center" style={{ color: "#8F4930" }} strokeWidth={2} />
+                <h4 className="font-medium group-hover:text-[#8F4930] line-clamp-1" style={{ color: "#343516" }}>
+                  {opt.name}
+                </h4>
+              </div>
               {opt.distance && (
-                <p className="text-sm mt-1" style={{ color: "#8F4930" }}>
+                <p className="text-sm mt-1 flex-shrink-0" style={{ color: "#8F4930" }}>
                   {opt.distance} from venue
                 </p>
               )}
               {opt.notes && (
-                <p className="text-xs mt-2 line-clamp-2 opacity-80" style={{ color: "#343516" }}>
+                <p className="text-xs mt-2 line-clamp-2 opacity-80 flex-1 min-h-0" style={{ color: "#343516" }}>
                   {opt.notes}
                 </p>
               )}
-              <span className="inline-block mt-2 text-xs group-hover:text-[#8F4930] transition-colors" style={{ color: "#8F4930" }}>
-                View details →
+              <span className="inline-flex items-center gap-1 mt-auto pt-2 text-xs group-hover:text-[#8F4930] transition-colors flex-shrink-0" style={{ color: "#8F4930" }}>
+                View details
+                <ExternalLink size={12} strokeWidth={2} />
               </span>
             </a>
           ))}
@@ -86,12 +83,10 @@ const AccommodationCards: React.FC<AccommodationCardsProps> = ({ options }) => {
           onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
           disabled={page >= totalPages - 1}
           aria-label="Next accommodation options"
-          className="flex-shrink-0 w-10 h-10 rounded-full border disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center hover:text-[#8F4930] transition-all duration-200 selectable-3d disabled:hover:transform-none shadow-sm"
-          style={{ backgroundColor: "#E2E4D8", borderColor: "rgba(52, 53, 22, 0.25)", color: "#343516" }}
+          className="flex-shrink-0 w-10 h-10 rounded-full disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center hover:text-[#8F4930] transition-all duration-200 selectable-3d disabled:hover:transform-none glass-subtle"
+          style={{ color: "#343516" }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
+          <ChevronRight size={20} strokeWidth={2} />
         </button>
       </div>
 

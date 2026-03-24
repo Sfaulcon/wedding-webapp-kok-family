@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 
 import { logger } from "../lib/logger";
+import { isValidToken } from "../lib/validation";
 
 const router = Router();
 
@@ -11,6 +12,7 @@ const GUESTS_FILE = path.join(__dirname, "../data/guests.json");
 const ACCOMMODATION_FILE = path.join(__dirname, "../data/accommodation.json");
 const RSVPS_FILE = path.join(__dirname, "../data/rsvps.json");
 const RSVPS_FROM_SHEET_FILE = path.join(__dirname, "../data/rsvps_from_sheet.json");
+const SONG_REQUESTS_FILE = path.join(__dirname, "../data/song_requests.json");
 
 /**
  * TRUE/true/Yes/yes = has accommodation (don't show options)
@@ -73,9 +75,29 @@ async function getRsvpedGuestIds(token: string): Promise<Set<string>> {
   return ids;
 }
 
+async function getSongRequestsForToken(token: string): Promise<Array<{ song_title: string; artist?: string; guest_id?: string }>> {
+  try {
+    if (!(await fs.pathExists(SONG_REQUESTS_FILE))) return [];
+    const data = (await fs.readJSON(SONG_REQUESTS_FILE)) as Array<Record<string, unknown>>;
+    return data
+      .filter((r) => (r.invite_token ?? getInviteToken(r)) === token)
+      .map((r) => ({
+        song_title: String(r.song_title ?? ""),
+        artist: r.artist ? String(r.artist) : undefined,
+        guest_id: r.guest_id ? String(r.guest_id) : undefined,
+      }));
+  } catch (err) {
+    logger.warn("Failed to read song_requests.json", { token, error: String(err) });
+    return [];
+  }
+}
+
 // GET /api/invite/:token
 router.get("/:token", async (req, res) => {
   const token = req.params.token;
+  if (!isValidToken(token)) {
+    return res.status(400).json({ message: "Invalid invite token" });
+  }
   logger.debug("Invite lookup started", { token });
 
   try {
@@ -111,6 +133,7 @@ router.get("/:token", async (req, res) => {
     const needsAccommodation = guestsWithRsvp.some(
       (g: Record<string, unknown>) => g.accomodation_required === "FALSE"
     );
+    const song_requests = await getSongRequestsForToken(token);
     logger.info("Invite served successfully", {
       token,
       groupName: invite.group_name,
@@ -122,6 +145,8 @@ router.get("/:token", async (req, res) => {
       group_name: invite.group_name,
       guests: guestsWithRsvp,
       accommodation_options: accommodation,
+      banking_details: process.env.BANKING_DETAILS || "TBD",
+      song_requests,
     });
   } catch (err) {
     logger.error("Invite lookup failed", err, { token });

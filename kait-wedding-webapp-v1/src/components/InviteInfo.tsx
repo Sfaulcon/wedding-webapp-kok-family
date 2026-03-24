@@ -1,3 +1,5 @@
+import { Shirt, UtensilsCrossed, Gift } from "lucide-react";
+
 /**
  * Edit the content below to customise dress code, food, and gifts info.
  */
@@ -9,35 +11,36 @@ const GIFTS_NOTE =
 
 const InfoBlock: React.FC<{
   title: string;
+  icon: React.ReactNode;
   children: React.ReactNode;
   delay?: number;
-}> = ({ title, children, delay = 0 }) => (
+}> = ({ title, icon, children, delay = 0 }) => (
   <div
-    className="py-4 px-4 rounded-lg animate-fade-in-up"
-    style={{
-      backgroundColor: "#E2E4D8",
-      border: "1px solid rgba(52, 53, 22, 0.2)",
-      animationDelay: `${delay}ms`,
-    }}
+    className="py-2 px-3 rounded-xl animate-fade-in-up flex-1 min-w-0 glass-subtle"
+    style={{ animationDelay: `${delay}ms` }}
   >
     <h4
-      className="text-sm font-semibold uppercase tracking-wider mb-2"
+      className="text-xs font-semibold uppercase tracking-wider mb-1 flex items-center gap-1.5"
       style={{ color: "#8F4930" }}
     >
+      {icon}
       {title}
     </h4>
-    <p className="text-sm leading-relaxed" style={{ color: "#343516" }}>
+    <div className="text-xs leading-snug" style={{ color: "#343516" }}>
       {children}
-    </p>
+    </div>
   </div>
 );
 
 const InviteInfo: React.FC = () => {
   return (
-    <section className="pt-6 pb-2 space-y-4">
-      <InfoBlock title="Dress code" delay={0}>{DRESS_CODE}</InfoBlock>
-      <InfoBlock title="Food" delay={100}>{FOOD_INFO}</InfoBlock>
-      <InfoBlock title="Gifts" delay={200}>{GIFTS_NOTE}</InfoBlock>
+    <section className="pt-4 pb-2">
+      {/* Compact grid for main info */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <InfoBlock title="Dress code" icon={<Shirt size={14} strokeWidth={2} />} delay={0}>{DRESS_CODE}</InfoBlock>
+        <InfoBlock title="Food" icon={<UtensilsCrossed size={14} strokeWidth={2} />} delay={100}>{FOOD_INFO}</InfoBlock>
+        <InfoBlock title="Gifts" icon={<Gift size={14} strokeWidth={2} />} delay={200}>{GIFTS_NOTE}</InfoBlock>
+      </div>
     </section>
   );
 };

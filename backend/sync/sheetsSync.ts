@@ -132,3 +132,33 @@ export async function appendRsvpToSheet(rows: RsvpRow[]): Promise<void> {
 
   logger.info("RSVPs appended to sheet", { rowCount: rows.length });
 }
+
+const SONG_REQUESTS_SHEET = "Song_Requests";
+
+/**
+ * Append a song request to the Song_Requests sheet.
+ * Ensure the spreadsheet has a "Song_Requests" tab with headers:
+ * timestamp, invite_token, guest_id, song_title, artist
+ */
+export async function appendSongRequestToSheet(entry: {
+  timestamp: string;
+  invite_token: string;
+  guest_id: string;
+  song_title: string;
+  artist: string;
+}): Promise<void> {
+  logger.debug("Appending song request to sheet", { guest_id: entry.guest_id, song_title: entry.song_title });
+
+  const sheets = await authSheets();
+  const values = [[entry.timestamp, entry.invite_token, entry.guest_id, entry.song_title, entry.artist || ""]];
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: SPREADSHEET_ID,
+    range: `${SONG_REQUESTS_SHEET}!A:E`,
+    valueInputOption: "USER_ENTERED",
+    insertDataOption: "INSERT_ROWS",
+    requestBody: { values },
+  });
+
+  logger.info("Song request appended to sheet");
+}

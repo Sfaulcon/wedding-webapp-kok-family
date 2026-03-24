@@ -3,7 +3,10 @@ import BackgroundCollage from "./components/BackgroundCollage";
 import Letter from "./components/Letter";
 import Header from "./components/Header";
 import InviteInfo from "./components/InviteInfo";
+import StoryTimeline from "./components/StoryTimeline";
 import Rsvp from "./components/Rsvp";
+import ShuttleServices from "./components/ShuttleServices";
+import SectionCard from "./components/SectionCard";
 
 function AppWithInvite() {
   const { token } = useParams<{ token: string }>();
@@ -18,8 +21,16 @@ function AppWithInvite() {
       <BackgroundCollage />
       <Letter>
         <Header />
-        <InviteInfo />
+        <SectionCard>
+          <InviteInfo />
+        </SectionCard>
+        <SectionCard>
+          <StoryTimeline />
+        </SectionCard>
         <Rsvp inviteToken={inviteToken} />
+        <SectionCard>
+          <ShuttleServices />
+        </SectionCard>
       </Letter>
     </div>
   );

@@ -1,3 +1,5 @@
+import { Check, X } from "lucide-react";
+
 type ToggleProps = {
   label: string;
   value: boolean | null;
@@ -21,31 +23,37 @@ export default function Toggle({
           type="button"
           disabled={disabled}
           onClick={() => setValue(true)}
-          className={`flex-1 py-2.5 rounded-lg border transition-all duration-200 selectable-3d shadow-sm ${
+          className={`flex-1 py-2.5 rounded-xl border transition-all duration-200 selectable-3d shadow-sm ${
             value === true ? "text-white selected" : "hover:border-[#8F4930]/50 disabled:opacity-60"
           }`}
           style={
             value === true
               ? { backgroundColor: "#343516", borderColor: "#343516" }
-              : { backgroundColor: "#E2E4D8", borderColor: "rgba(52, 53, 22, 0.25)", color: "#343516" }
+              : { background: "rgba(226, 228, 216, 0.6)", backdropFilter: "blur(8px)", borderColor: "rgba(52, 53, 22, 0.2)", color: "#343516" }
           }
         >
-          Attending
+          <span className="flex items-center justify-center gap-2">
+            <Check size={16} strokeWidth={2.5} />
+            Attending
+          </span>
         </button>
         <button
           type="button"
           disabled={disabled}
           onClick={() => setValue(false)}
-          className={`flex-1 py-2.5 rounded-lg border transition-all duration-200 selectable-3d shadow-sm ${
+          className={`flex-1 py-2.5 rounded-xl border transition-all duration-200 selectable-3d shadow-sm ${
             value === false ? "text-white selected" : "hover:border-[#8F4930]/50 disabled:opacity-60"
           }`}
           style={
             value === false
               ? { backgroundColor: "#343516", borderColor: "#343516" }
-              : { backgroundColor: "#E2E4D8", borderColor: "rgba(52, 53, 22, 0.25)", color: "#343516" }
+              : { background: "rgba(226, 228, 216, 0.6)", backdropFilter: "blur(8px)", borderColor: "rgba(52, 53, 22, 0.2)", color: "#343516" }
           }
         >
-          Not Attending
+          <span className="flex items-center justify-center gap-2">
+            <X size={16} strokeWidth={2.5} />
+            Not Attending
+          </span>
         </button>
       </div>
     </div>

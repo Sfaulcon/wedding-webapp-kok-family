@@ -5,7 +5,9 @@
     "full_name": "Lee-Anne Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g002",
@@ -13,7 +15,9 @@
     "full_name": "Andrew Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g003",
@@ -21,7 +25,9 @@
     "full_name": "Shaun Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g004",
@@ -29,7 +35,9 @@
     "full_name": "Hannah Young",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g005",
@@ -37,7 +45,9 @@
     "full_name": "Danny Miselo",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g006",
@@ -45,7 +55,9 @@
     "full_name": "Jess Miselo",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g007",
@@ -53,7 +65,9 @@
     "full_name": "Mason Miselo",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g008",
@@ -61,7 +75,9 @@
     "full_name": "Tracey van den Heever",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g009",
@@ -69,7 +85,9 @@
     "full_name": "Reinard van den Heever",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g010",
@@ -77,7 +95,9 @@
     "full_name": "Gillian van den Heever",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g011",
@@ -85,7 +105,9 @@
     "full_name": "Ryan van den Heever",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g012",
@@ -93,7 +115,9 @@
     "full_name": "Jimmy Bubb",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g013",
@@ -101,7 +125,9 @@
     "full_name": "Wendy Bubb",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g014",
@@ -109,7 +135,9 @@
     "full_name": "Cindy Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g015",
@@ -117,7 +145,9 @@
     "full_name": "Darren Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g016",
@@ -125,7 +155,9 @@
     "full_name": "Leigh Faulkner",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g017",
@@ -133,7 +165,9 @@
     "full_name": "Anton Kok",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g018",
@@ -141,7 +175,9 @@
     "full_name": "Annebritta Kok",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g019",
@@ -149,7 +185,9 @@
     "full_name": "Carmen de Villiers",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g020",
@@ -157,7 +195,9 @@
     "full_name": "Alexa Louw",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g021",
@@ -165,7 +205,9 @@
     "full_name": "TJ Louw",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g022",
@@ -173,7 +215,9 @@
     "full_name": "Zandra Geldenhuys",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g023",
@@ -181,7 +225,9 @@
     "full_name": "Christo Geldenhuys",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g024",
@@ -189,7 +235,9 @@
     "full_name": "Wynand Kok",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g025",
@@ -197,7 +245,9 @@
     "full_name": "Andrea Pienaar",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g026",
@@ -205,7 +255,9 @@
     "full_name": "Ingrid Joubert",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g027",
@@ -213,7 +265,9 @@
     "full_name": "Francois Joubert",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g028",
@@ -221,7 +275,9 @@
     "full_name": "Baby Joubert",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g029",
@@ -229,7 +285,9 @@
     "full_name": "Corne Alberts",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g030",
@@ -237,7 +295,9 @@
     "full_name": "Deon Alberts",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g031",
@@ -245,7 +305,9 @@
     "full_name": "Etienne Kok",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g032",
@@ -253,7 +315,9 @@
     "full_name": "Monica Kok",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g033",
@@ -261,7 +325,9 @@
     "full_name": "Ina van Heerden",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "FALSE"
+    "accomodation_required": "FALSE",
+    "cottage_number": "TBD",
+    "amount_owed": "TBD"
   },
   {
     "guest_id": "g034",
@@ -269,7 +335,9 @@
     "full_name": "Fleetwood van Heerden",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g035",
@@ -277,7 +345,9 @@
     "full_name": "Nils van Heerden",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g036",
@@ -285,7 +355,9 @@
     "full_name": "Francois van Heerden",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g037",
@@ -293,7 +365,9 @@
     "full_name": "Marita van Heerden",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g038",
@@ -301,7 +375,9 @@
     "full_name": "Pieter de Wet",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g039",
@@ -309,7 +385,9 @@
     "full_name": "Karla Schlecter",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g040",
@@ -317,7 +395,9 @@
     "full_name": "Wian Groenewald",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g041",
@@ -325,7 +405,9 @@
     "full_name": "Izebelle Groenewald",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g042",
@@ -333,7 +415,9 @@
     "full_name": "Helgardt de Villiers",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g043",
@@ -341,7 +425,9 @@
     "full_name": "Gordon Horne",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g044",
@@ -349,7 +435,9 @@
     "full_name": "Will Smith",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g045",
@@ -357,7 +445,9 @@
     "full_name": "Ashley van der Spuy",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g046",
@@ -365,7 +455,9 @@
     "full_name": "Demi Murray",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g047",
@@ -373,7 +465,9 @@
     "full_name": "Meagan Kuhn",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g048",
@@ -381,7 +475,9 @@
     "full_name": "Nicola Dreyer",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g049",
@@ -389,7 +485,9 @@
     "full_name": "Zani van Beek",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g050",
@@ -397,7 +495,9 @@
     "full_name": "Henjo van Beek",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g051",
@@ -405,7 +505,9 @@
     "full_name": "Liandi Conradie",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g052",
@@ -413,7 +515,9 @@
     "full_name": "Jandre Theron",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g053",
@@ -421,7 +525,9 @@
     "full_name": "Jason Wilson",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g054",
@@ -429,7 +535,9 @@
     "full_name": "Jaime Tubby",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g055",
@@ -437,7 +545,9 @@
     "full_name": "Tim Dunkley",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g056",
@@ -445,7 +555,9 @@
     "full_name": "Eden Peterkin",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g057",
@@ -453,7 +565,9 @@
     "full_name": "Tom Harper",
     "invited_wedding": "TRUE",
     "invited_braai": "TRUE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g058",
@@ -461,7 +575,9 @@
     "full_name": "Jamie Behrens",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g059",
@@ -469,7 +585,9 @@
     "full_name": "Bianca Adams",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g060",
@@ -477,7 +595,9 @@
     "full_name": "Courtney Merryweather",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g061",
@@ -485,7 +605,9 @@
     "full_name": "Lee Merryweather",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g062",
@@ -493,7 +615,9 @@
     "full_name": "Bruce Merryweather",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g063",
@@ -501,7 +625,9 @@
     "full_name": "Lynn Adams",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g064",
@@ -509,7 +635,9 @@
     "full_name": "Sonya Behrens",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g065",
@@ -517,7 +645,9 @@
     "full_name": "Dave Behrens",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g066",
@@ -525,7 +655,9 @@
     "full_name": "Elizabeth Viljoen",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g067",
@@ -533,7 +665,9 @@
     "full_name": "Louw Viljoen",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g068",
@@ -541,7 +675,9 @@
     "full_name": "Nicola Viljoen",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g069",
@@ -549,7 +685,9 @@
     "full_name": "Faffa",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g070",
@@ -557,7 +695,9 @@
     "full_name": "Carina Williams",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g071",
@@ -565,7 +705,9 @@
     "full_name": "Geoff Williams",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g072",
@@ -573,7 +715,9 @@
     "full_name": "Michelle van Staden",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g073",
@@ -581,7 +725,9 @@
     "full_name": "Roean van Staden",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g074",
@@ -589,7 +735,9 @@
     "full_name": "Oom Otto Bester",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g075",
@@ -597,7 +745,9 @@
     "full_name": "Oom Eric",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g076",
@@ -605,7 +755,9 @@
     "full_name": "Mariehette Mckay",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g077",
@@ -613,7 +765,9 @@
     "full_name": "Albert Maritz",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g078",
@@ -621,7 +775,9 @@
     "full_name": "Nikki Thurgood",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   },
   {
     "guest_id": "g079",
@@ -629,6 +785,8 @@
     "full_name": "Wayne Thurgood",
     "invited_wedding": "TRUE",
     "invited_braai": "FALSE",
-    "accomodation_required": "TRUE"
+    "accomodation_required": "TRUE",
+    "cottage_number": "",
+    "amount_owed": ""
   }
 ]

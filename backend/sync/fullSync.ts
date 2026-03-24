@@ -11,11 +11,15 @@ export function fullSync() {
   const guestsJson = path.join(__dirname, "../data/guests.json");
   const accommodationJson = path.join(__dirname, "../data/accommodation.json");
   const rsvpsFromSheetJson = path.join(__dirname, "../data/rsvps_from_sheet.json");
+  const songRequestsJson = path.join(__dirname, "../data/song_requests.json");
 
   queueSyncSheet(SPREADSHEET_ID, "Invites", invitesJson);
   queueSyncSheet(SPREADSHEET_ID, "Guests", guestsJson);
   queueSyncSheet(SPREADSHEET_ID, "Accommodation_Options", accommodationJson);
   queueSyncSheet(SPREADSHEET_ID, "RSVPs", rsvpsFromSheetJson);
+  queueSyncSheet(SPREADSHEET_ID, "Song_Requests", songRequestsJson);
 
-  logger.debug("All sync tasks queued", { sheets: ["Invites", "Guests", "Accommodation_Options", "RSVPs"] });
+  logger.debug("All sync tasks queued", {
+    sheets: ["Invites", "Guests", "Accommodation_Options", "RSVPs", "Song_Requests"],
+  });
 }

@@ -1,11 +1,14 @@
 import express from "express";
 import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import cron from "node-cron";
 
 import { logger } from "./lib/logger";
 import inviteRoutes from "./routes/invite";
 import rsvpRoutes from "./routes/rsvp";
+import songRequestRoutes from "./routes/songRequest";
 import manualTriggerRoutes from "./routes/manual_trigger";
 import { fullSync } from "./sync/fullSync";
 
@@ -13,8 +16,46 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+// Security headers
+app.use(helmet({
+  contentSecurityPolicy: false, // Allow inline styles/scripts if needed for frontend
+}));
+
+// CORS - restrict origins in production
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim())
+  : ["http://localhost:5713", "http://localhost:5173", "http://127.0.0.1:5713", "http://127.0.0.1:5173"];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+}));
+
+// Limit JSON body size
+app.use(express.json({ limit: "10kb" }));
+
+// General rate limit - 100 requests per 15 min per IP
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api", generalLimiter);
+
+// Stricter limit for write endpoints (RSVP, song request)
+const writeLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use("/api/rsvp", writeLimiter);
+app.use("/api/song-request", writeLimiter);
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -35,12 +76,17 @@ app.use((req, res, next) => {
 
 app.use("/api/invite", inviteRoutes);
 app.use("/api/rsvp", rsvpRoutes);
+app.use("/api/song-request", songRequestRoutes);
 app.use("/api", manualTriggerRoutes);
 
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  logger.info("Server started", { port: PORT, logLevel: process.env.LOG_LEVEL || "INFO" });
+  logger.info("Server started", {
+    port: PORT,
+    logLevel: process.env.LOG_LEVEL || "INFO",
+    corsOrigins: allowedOrigins.length,
+  });
   fullSync();
 });
 
