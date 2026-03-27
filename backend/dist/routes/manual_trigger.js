@@ -4,10 +4,10 @@ const express_1 = require("express");
 const logger_1 = require("../lib/logger");
 const fullSync_1 = require("../sync/fullSync");
 const router = (0, express_1.Router)();
-const SYNC_SECRET = process.env.SYNC_SECRET;
 const INSECURE_DEFAULT = "change-me-in-production";
 // POST /api → manual trigger (requires SYNC_SECRET in Authorization header or body)
 router.post("/", (req, res) => {
+    const SYNC_SECRET = process.env.SYNC_SECRET;
     const authHeader = req.headers.authorization;
     const token = authHeader?.startsWith("Bearer ")
         ? authHeader.slice(7)
